@@ -1,0 +1,73 @@
+package mba.imd.reunion;
+
+import javax.mail.*;
+import javax.mail.internet.*;
+import java.util.*;
+
+
+
+public class email {
+	
+	Scanner scanner = new Scanner(System.in);
+	private String userName = "imdmbaclassof2015@gmail.com";
+	private String password = "Madrid2016";
+	private String senderEmail = "imdmbaclassof2015@gmail.com";
+	private String destEmail = "thibaut.saintloup@gmail.com";
+	private String subject = "dude";
+	private String bodyMessage = "dernier test pour ce soir";
+	
+	public email(){
+		Properties p = new Properties();
+		p.put("mail.smtp.auth", "true");
+		p.put("mail.smtp.starttls.enable", "true");
+		p.put("mail.smtp.host", "smtp.gmail.com");
+		p.put("mail.smtp.port", "587");
+		
+		/* System.out.println("gmail username: ");
+		userName = scanner.nextLine();
+		
+		System.out.println("gmail password: ");
+		password = scanner.nextLine();
+		
+		System.out.println("from email");
+		senderEmail = scanner.nextLine();
+		
+		System.out.println("to email: ");
+		destEmail = scanner.nextLine();
+		
+		System.out.println("subject: ");
+		subject = scanner.nextLine();
+		
+		System.out.println("message: ");
+		bodyMessage = scanner.nextLine(); */
+		
+		
+		Session session = Session.getInstance(p, new javax.mail.Authenticator(){
+			protected PasswordAuthentication getPasswordAuthentication(){
+				return new PasswordAuthentication(userName, password);
+			}
+		});
+		
+		try{
+			System.out.println("test message 1");
+			Message message = new MimeMessage(session);
+			System.out.println("test message 2");
+			message.setFrom(new InternetAddress(senderEmail));
+			System.out.println("test message 3");
+			message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(destEmail));
+			System.out.println("test message 4");
+			message.setSubject(subject);
+			System.out.println("test message 5");
+			message.setText(bodyMessage);
+			System.out.println("test message 6");
+			Transport.send(message);
+			System.out.println("message sent");
+			}
+		catch(MessagingException e){
+				System.out.println("somehow the program ran but it didn't work");
+				throw new RuntimeException(e);
+			}
+	
+	}
+
+}
