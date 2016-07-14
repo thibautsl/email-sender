@@ -1,0 +1,48 @@
+package mba.imd.reunion;
+
+public class classmate {
+	private String name;
+	private String email;
+	private int capea;
+	private int toledo;
+	private int friday;
+	private int saturday;
+	private int paid;
+	
+	classmate(String n, String e){
+		setName(n);
+		setEmail(e);
+		capea = 0;
+		toledo = 0;
+		friday = 0;
+		saturday = 0;
+		paid = 0;
+	}
+	
+	classmate(String n, String e, int c, int t, int f, int s, int p){
+		setName(n);
+		setEmail(e);
+		setCapea(c);
+		setToledo(t);
+		setFriday(f);
+		setSaturday(s);
+		setPaid(p);
+	}
+	
+	public void setName(String n){name = n;}
+	public void setEmail(String e){email = e;}
+	public void setCapea(int c){capea = c;}
+	public void setToledo(int t){toledo = t;}
+	public void setFriday(int f){friday = f;}
+	public void setSaturday(int s){saturday = s;}
+	public void setPaid(int p){paid = p;}
+	
+	public String callName(){return name;}
+	public String callEmail(){return email;}
+	public int callCapea(){return capea;}
+	public int callToledo(){return toledo;}
+	public int callFriday(){return friday;}
+	public int callSaturday(){return saturday;}
+	public int callPaid(){return paid;}
+
+}
